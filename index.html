@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Harga Kuota All Operator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        /* Style untuk setiap section operator */
+        .operator-section {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        /* Header operator dengan logo */
+        .operator-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .operator-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Logo XL */
+        .logo-xl {
+            background: linear-gradient(135deg, #ed1c24 0%, #b1141a 100%);
+            color: white;
+            font-weight: 800;
+            font-size: 24px;
+            padding: 8px 18px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 0 #8b0f14;
+        }
+        
+        /* Logo Axis */
+        .logo-axis {
+            background: linear-gradient(135deg, #ff6b00 0%, #cc5500 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 22px;
+            padding: 8px 20px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 0 #994000;
+        }
+        
+        /* Logo Tri */
+        .logo-tri {
+            background: linear-gradient(135deg, #4a0080 0%, #2d004d 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            padding: 8px 18px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 0 #1a002b;
+        }
+        
+        /* Logo IM3 */
+        .logo-im3 {
+            background: linear-gradient(135deg, #00a651 0%, #007a3b 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            padding: 8px 20px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 0 #004d26;
+        }
+        
+        /* Logo AS */
+        .logo-as {
+            background: linear-gradient(135deg, #004c97 0%, #003366 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 24px;
+            padding: 8px 18px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 0 #001f3f;
+        }
+        
+        .operator-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .operator-subtitle {
+            margin-left: auto;
+            background-color: #f0f0f0;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Tabel */
+        .table-container {
+            padding: 20px 25px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+        
+        th {
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            font-weight: 600;
+            padding: 14px 12px;
+            text-align: left;
+            border: 1px solid #d0d7de;
+        }
+        
+        td {
+            padding: 12px;
+            border: 1px solid #d0d7de;
+        }
+        
+        /* Kolom NO */
+        td:first-child {
+            text-align: center;
+            width: 50px;
+            background-color: #fafbfc;
+            font-weight: 500;
+        }
+        
+        /* Kolom HARGA */
+        td:nth-child(3) {
+            font-weight: 600;
+            color: #0a4b33;
+        }
+        
+        /* Kolom VERSI */
+        td:last-child {
+            color: #555;
+        }
+        
+        /* Baris genap */
+        tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+        
+        /* Hover efek */
+        tr:hover {
+            background-color: #e8f0fe;
+        }
+        
+        /* Footer note */
+        .footer-note {
+            background-color: #f9f9f9;
+            padding: 15px 25px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .note-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .note-item i {
+            color: #dc3545;
+            font-style: normal;
+            font-size: 18px;
+        }
+        
+        /* Dua logo dalam satu baris */
+        .dual-logo {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .logo-xl-small {
+            background: #ed1c24;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        .logo-axis-small {
+            background: #ff6b00;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .operator-header {
+                flex-wrap: wrap;
+            }
+            .operator-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Section XL Circle -->
+        <div class="operator-section">
+            <div class="operator-header">
+                <div class="operator-logo">
+                    <div class="logo-xl">XL</div>
+                </div>
+                <div class="operator-title">Daftar Harga Kuota Circle</div>
+                <div class="operator-subtitle">XL Prioritas</div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>JENIS KUOTA</th>
+                            <th>HARGA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1.</td><td>5GB - 9GB</td><td>IDR 22.000</td></tr>
+                        <tr><td>2.</td><td>10GB - 14GB</td><td>IDR 27.000</td></tr>
+                        <tr><td>3.</td><td>15GB - 19GB</td><td>IDR 32.000</td></tr>
+                        <tr><td>4.</td><td>20GB - 24GB</td><td>IDR 37.000</td></tr>
+                        <tr><td>5.</td><td>25GB - 29GB</td><td>IDR 42.000</td></tr>
+                        <tr><td>6.</td><td>30GB - 34GB</td><td>IDR 47.000</td></tr>
+                        <tr><td>7.</td><td>35GB - 39GB</td><td>IDR 52.000</td></tr>
+                        <tr><td>8.</td><td>40GB - 44GB</td><td>IDR 58.000</td></tr>
+                        <tr><td>9.</td><td>45GB - 49GB</td><td>IDR 63.000</td></tr>
+                        <tr><td>10.</td><td>50GB - 54GB</td><td>IDR 68.000</td></tr>
+                        <tr><td>11.</td><td>55GB - 59GB</td><td>IDR 74.000</td></tr>
+                        <tr><td>12.</td><td>60GB - 64GB</td><td>IDR 79.000</td></tr>
+                        <tr><td>13.</td><td>65GB - 69GB</td><td>IDR 84.000</td></tr>
+                        <tr><td>14.</td><td>70GB - 74GB</td><td>IDR 89.000</td></tr>
+                        <tr><td>15.</td><td>75GB - 79GB</td><td>IDR 95.000</td></tr>
+                        <tr><td>16.</td><td>80GB - 84GB</td><td>IDR 100.000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="footer-note">
+                <div class="note-item"><i>⚠️</i> Harga Sewaktu-Waktu Bisa Berubah</div>
+                <div class="note-item"><i>⏰</i> Bayar Langsung / Maksimal Malam Hari</div>
+            </div>
+        </div>
+        
+        <!-- Section XL & Axis Akrab -->
+        <div class="operator-section">
+            <div class="operator-header">
+                <div class="dual-logo">
+                    <div class="logo-xl-small">XL</div>
+                    <div class="logo-axis-small">AXIS</div>
+                </div>
+                <div class="operator-title">Daftar Harga Kuota Akrab</div>
+                <div class="operator-subtitle">XL & Axis</div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>JENIS KUOTA</th>
+                            <th>HARGA</th>
+                            <th>VERSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1.</td><td>40-42 GB</td><td>IDR 75.000</td><td>1,2,3</td></tr>
+                        <tr><td>2.</td><td>49 GB</td><td>IDR 77.000</td><td>2</td></tr>
+                        <tr><td>3.</td><td>52-54 GB</td><td>IDR 80.000</td><td>1</td></tr>
+                        <tr><td>4.</td><td>70 GB</td><td>IDR 90.000</td><td>1</td></tr>
+                        <tr><td>5.</td><td>90-92 GB</td><td>IDR 110.000</td><td>1,2,3</td></tr>
+                        <tr><td>6.</td><td>52 GB</td><td>IDR 78.000</td><td>2</td></tr>
+                        <tr><td>7.</td><td>65 GB</td><td>IDR 86.000</td><td>2</td></tr>
+                        <tr><td>8.</td><td>78 GB</td><td>IDR 95.000</td><td>2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="footer-note">
+                <div class="note-item"><i>⚠️</i> Harga Sewaktu-Waktu Bisa Berubah</div>
+                <div class="note-item"><i>⏰</i> Bayar Langsung / Maksimal Malam Hari</div>
+            </div>
+        </div>
+        
+        <!-- Section Tri -->
+        <div class="operator-section">
+            <div class="operator-header">
+                <div class="operator-logo">
+                    <div class="logo-tri">Tri</div>
+                </div>
+                <div class="operator-title">Daftar Harga Kuota Tri</div>
+                <div class="operator-subtitle">3 (Tri)</div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>JENIS KUOTA</th>
+                            <th>HARGA</th>
+                            <th>VERSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1.</td><td>30GB 30 HARI</td><td>IDR 60.000</td><td>1GB/DAY</td></tr>
+                        <tr><td>2.</td><td>30GB 5 HARI</td><td>IDR 38.000</td><td>24 JAM</td></tr>
+                        <tr><td>3.</td><td>75GB 7 HARI</td><td>IDR 57.000</td><td>24 JAM</td></tr>
+                        <tr><td>4.</td><td>150GB 28 HARI</td><td>IDR 138.000</td><td>24 JAM</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="footer-note">
+                <div class="note-item"><i>⚠️</i> Harga Sewaktu-Waktu Bisa Berubah</div>
+                <div class="note-item"><i>⏰</i> Bayar Langsung / Maksimal Malam Hari</div>
+            </div>
+        </div>
+        
+        <!-- Section IM3 -->
+        <div class="operator-section">
+            <div class="operator-header">
+                <div class="operator-logo">
+                    <div class="logo-im3">IM3</div>
+                </div>
+                <div class="operator-title">Daftar Harga Kuota IM3</div>
+                <div class="operator-subtitle">Indosat Ooredoo</div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>JENIS KUOTA</th>
+                            <th>HARGA</th>
+                            <th>VERSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1.</td><td>10GB 28 HARI</td><td>IDR 41.000</td><td>24 JAM</td></tr>
+                        <tr><td>2.</td><td>30GB 5 HARI</td><td>IDR 38.000</td><td>24 JAM</td></tr>
+                        <tr><td>3.</td><td>75GB 7 HARI</td><td>IDR 58.000</td><td>24 JAM</td></tr>
+                        <tr><td>4.</td><td>150GB 28 HARI</td><td>IDR 138.000</td><td>24 JAM</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="footer-note">
+                <div class="note-item"><i>⚠️</i> Harga Sewaktu-Waktu Bisa Berubah</div>
+                <div class="note-item"><i>⏰</i> Bayar Langsung / Maksimal Malam Hari</div>
+            </div>
+        </div>
+        
+        <!-- Section Masa Aktif AS (Axis/XL/AS/Tri) -->
+        <div class="operator-section">
+            <div class="operator-header">
+                <div class="dual-logo">
+                    <div class="logo-xl-small">XL</div>
+                    <div class="logo-axis-small">AXIS</div>
+                    <div class="logo-as" style="font-size: 16px; padding: 4px 12px;">AS</div>
+                    <div class="logo-tri" style="font-size: 16px; padding: 4px 12px;">TRI</div>
+                </div>
+                <div class="operator-title">Daftar Harga Masa Aktif Kartu</div>
+                <div class="operator-subtitle">Perpanjang Masa Aktif</div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>JENIS MASTIF</th>
+                            <th>HARGA</th>
+                            <th>VERSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1.</td><td>XL 1 BULAN</td><td>IDR 5.000</td><td>OTP</td></tr>
+                        <tr><td>2.</td><td>XL 1 BULAN</td><td>IDR 11.000</td><td>NON OTP</td></tr>
+                        <tr><td>3.</td><td>AXIS 1 BULAN</td><td>IDR 11.000</td><td>NON OTP</td></tr>
+                        <tr><td>4.</td><td>AS 1 BULAN</td><td>IDR 19.000</td><td>NON OTP</td></tr>
+                        <tr><td>5.</td><td>AS 3 BULAN</td><td>IDR 45.000</td><td>NON OTP</td></tr>
+                        <tr><td>6.</td><td>AS 1 TAHUN</td><td>IDR 160.000</td><td>NON OTP</td></tr>
+                        <tr><td>7.</td><td>TRI 4 BULAN</td><td>IDR 10.000</td><td>NON OTP</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="footer-note">
+                <div class="note-item"><i>⚠️</i> Harga Sewaktu-Waktu Bisa Berubah</div>
+                <div class="note-item"><i>⏰</i> Bayar Langsung / Maksimal Malam Hari</div>
+            </div>
+        </div>
+        
+        <!-- Footer global -->
+        <div style="text-align: center; color: #777; font-size: 13px; margin-top: 10px;">
+            * Harga dalam Rupiah Indonesia · Semua produk tersedia
+        </div>
+    </div>
+</body>
+</html>
